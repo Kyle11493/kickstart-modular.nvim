@@ -55,12 +55,57 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          mappings = {
+            --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          },
+          vimgrep_arguments = {
+            -- configure to use ripgrep
+            'rg',
+            '--follow', -- Follow symbolic links
+            '--hidden', -- Search for hidden files
+            '--no-heading', -- Don't group matches by each file
+            '--with-filename', -- Print the file path with the matched lines
+            '--line-number', -- Show line numbers
+            '--column', -- Show column numbers
+            '--smart-case', -- Smart case search
+            -- Patterns to exclude
+            -- file_ignore_patterns = {
+            -- '*/.git/*',
+            -- '*/.vscode/*',
+            -- '*/build/*',
+            -- },
+            -- Exclude some patterns from search
+            '--glob=!**/.git/*',
+            '--glob=!**/.idea/*',
+            '--glob=!**/.vscode/*',
+            '--glob=!**/build/*',
+            '--glob=!**/dist/*',
+            '--glob=!**/yarn.lock',
+            '--glob=!**/package-lock.json',
+          },
+        },
+        pickers = {
+          find_files = {
+            -- determines whether to show hidden files or not (default: false)
+            hidden = true,
+            -- show files ignored by .gitignore, .ignore, etc. (default: false)
+            -- no_ignore = true,
+            -- show files ignored by .gitignore, .ignore, etc. in parent dirs. (default: false)
+            -- no_ignore_parent = true,
+            -- needed to exclude some files & dirs from general search
+            -- when not included or specified in .gitignore
+            find_command = {
+              'rg',
+              '--files',
+              '--hidden',
+              '--glob=!**/.git/*',
+              '--glob=!**/.vscode/*',
+              '--glob=!**/build/*',
+              '--glob=!**/dist/*',
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
