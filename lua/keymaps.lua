@@ -34,6 +34,9 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Quick quikfix list navigation
 vim.keymap.set('n', '<C-j>', '<cmd>cnext<CR>', { desc = 'Next quikfix list item' })
 vim.keymap.set('n', '<C-k>', '<cmd>cprev<CR>', { desc = 'Previous quikfix list item' })
+
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = '[P]roject [V]iew' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
